@@ -11,9 +11,10 @@ const dropdownBtn = document.querySelector('.dropbtn');
 const dropdownMenu = document.querySelector('.dropdown-content');
 
 dropdownBtn.addEventListener('click', (e) => {
-  e.stopPropagation(); // prevent click bubbling
+  e.preventDefault();
   dropdownMenu.classList.toggle('show');
 });
+
 
 // Close dropdown if clicking outside
 document.addEventListener('click', (e) => {

@@ -76,30 +76,51 @@
     width: 100%;
 }
 
-.button{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    padding: 10px 20px;
-    height: 100%;
-    width: 100%;
-    border: none;
-    outline: none;
-    border-radius: 4px;
-    background: linear-gradient(to top, #63d3ef 0%, #50b5f0 100%);
-    color: #fff;
+/* ================= SIGN UP BUTTON HOVER ================= */
+.navbar__btn .button {
+  background: linear-gradient(135deg, #63d3ef, #50b5f0);
+  padding: 10px 18px;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
 }
 
-.button:hover{
-    background: #38047c;
-    transition: all 0.5s ease;
+.navbar__btn .button:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #7ae0ff, #63d3ef);
+  box-shadow: 0 10px 25px rgba(99, 211, 239, 0.5);
 }
 
-.navbar__links:hover{
-    color: #02abee;
-    transition: all 0.3s ease;
+
+/* ================= NAVBAR LINK HOVER ================= */
+.navbar__links {
+  position: relative;
 }
+
+.navbar__links::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(to right, #63d3ef, #50b5f0);
+  transition: width 0.3s ease;
+}
+
+.navbar__links:hover::after {
+  width: 100%;
+}
+
+.navbar__links:hover {
+  color: #63d3ef;
+}
+
 
 @media screen and (max-width: 960px){
     .navbar__container{
@@ -906,6 +927,28 @@ body {
   display: block;
 }
 
+/* ================= DROPDOWN HOVER OPEN ================= */
+
+/* Open dropdown on hover (desktop) */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Smooth appearance */
+.dropdown-content {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+/* Visible state */
+.dropdown:hover .dropdown-content,
+.dropdown-content.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
 .custom-video {
   background: #141414;
   padding: 4rem 2rem;
@@ -1087,3 +1130,62 @@ body.fantasy-page .website__rights {
 body.fantasy-page .footer__link--items a:hover {
   color: #4fd1c5; /* same hover as navbar */
 }
+
+
+/* ================= HOME PAGE PURPLE THEME ================= */
+body:not(.fantasy-page) {
+  background: linear-gradient(
+    180deg,
+    #1b001f 0%,
+    #23002a 50%,
+    #141014 100%
+    
+  );
+}
+
+/* Home page sections – purple background */
+body:not(.fantasy-page) .navbar,
+body:not(.fantasy-page) .main,
+body:not(.fantasy-page) .about,
+body:not(.fantasy-page) .services,
+body:not(.fantasy-page) .highlights,
+body:not(.fantasy-page) .custom-gif,
+body:not(.fantasy-page) .footer__container {
+  background: linear-gradient(
+    180deg,
+    #1b001f 0%,
+    #23002a 60%,
+    #1a001f 100%
+  );
+}
+
+body:not(.fantasy-page) .services__card,
+body:not(.fantasy-page) .highlight__video {
+  box-shadow: 0 10px 30px rgba(99, 211, 239, 0.15);
+}
+
+/* ================= HOME PAGE FINAL PURPLE OVERRIDE ================= */
+/* This MUST be at the very end of styles.css */
+
+body:not(.fantasy-page),
+body:not(.fantasy-page) .navbar,
+body:not(.fantasy-page) .main,
+body:not(.fantasy-page) .main__container,
+body:not(.fantasy-page) .about,
+body:not(.fantasy-page) .services,
+body:not(.fantasy-page) .highlights,
+body:not(.fantasy-page) .custom-gif,
+body:not(.fantasy-page) .footer__container {
+  background: linear-gradient(
+    180deg,
+    #1b001f 0%,
+    #23002a 50%,
+    #1a001f 100%
+  ) !important;
+}
+
+/* Hero left panel fix */
+body:not(.fantasy-page) .main__content {
+  background: transparent;
+}
+
